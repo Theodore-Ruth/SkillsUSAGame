@@ -9,7 +9,8 @@ Windows and Mac: https://www.python.org/downloads/release/python-365/
 
 Linux: install by typing "sudo apt-get install idle" into the terminal.
 
-Once you have installed idle, simply download the most recent version of the game,
-right click it when it is finished, and open with idle
+Once you have installed idle, simply download the repository as a zip,
+open the zip file, and right click on the most recent .py file. Then open with
+idle
 
 After that, simply hit F5 on your keyboard and it will automatically run the file for you.
