@@ -4,6 +4,7 @@ My Project with Amanda Thomas to make a game for Skills USA
 -----------------------------------------------------------------------------------------
 In order to launch my game, we reccomend that you have python3 IDLE
 which can be installed here by folling the instructions on pythons website:
+
 Windows and Mac: https://www.python.org/downloads/release/python-365/
 
 Linux: install by typing "sudo apt-get install idle" into the terminal.
