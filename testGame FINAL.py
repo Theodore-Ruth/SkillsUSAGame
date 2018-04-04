@@ -1201,15 +1201,7 @@ def consumeOption(item, yValue, room):
                 pygame.draw.rect(DISPLAYSURF, textures[room[cl][rw]], (TILESIZE * rw, TILESIZE * cl, TILESIZE, TILESIZE))
         pygame.draw.rect(DISPLAYSURF, RED, (playerPos[0], playerPos[1], TILESIZE, TILESIZE))
         pygame.draw.rect(DISPLAYSURF, textures[MENU], (TILESIZE * 7, TILESIZE * 2, TILESIZE * 1.75, TILESIZE * 3))
-        pygame.draw.rect(DISPLAYSURF, BLUE, (TILESIZE * 8, (yValue) - 16, TILESIZE / 2, (TILESIZE / 2) + 16))
-
-        useText = invFont.render('Use', False, WHITE)
-        DISPLAYSURF.blit(useText, ((TILESIZE * 8) + 24, (yValue) - 8))
-
-        backAgainText = invFont.render('Back', False, WHITE)
-        DISPLAYSURF.blit(backAgainText, ((TILESIZE * 8) + 24, (yValue) + 32))
-
-        pygame.draw.rect(DISPLAYSURF, WHITE, ((TILESIZE * 8) + 4, ((yValue) - 8) + selection, TILESIZE / 8, TILESIZE / 8))
+        
         
 
         pygame.draw.rect(DISPLAYSURF, WHITE, (TILESIZE * 7.25, yValue, TILESIZE / 8, TILESIZE / 8))
@@ -1222,6 +1214,16 @@ def consumeOption(item, yValue, room):
             itemText = invFont.render(playerItem, False, WHITE)
             DISPLAYSURF.blit(itemText, (TILESIZE * 7.5, TILESIZE * (2 + distance)))
             distance += 0.25
+
+        pygame.draw.rect(DISPLAYSURF, BLUE, (TILESIZE * 8, (yValue) - 16, TILESIZE / 2, (TILESIZE / 2) + 16))
+
+        useText = invFont.render('Use', False, WHITE)
+        DISPLAYSURF.blit(useText, ((TILESIZE * 8) + 24, (yValue) - 8))
+
+        backAgainText = invFont.render('Back', False, WHITE)
+        DISPLAYSURF.blit(backAgainText, ((TILESIZE * 8) + 24, (yValue) + 32))
+
+        pygame.draw.rect(DISPLAYSURF, WHITE, ((TILESIZE * 8) + 4, ((yValue) - 8) + selection, TILESIZE / 8, TILESIZE / 8))
 
         pygame.display.update()
 
@@ -1262,15 +1264,11 @@ def consumeOptionFight(item, yValue, monster):
         
         pygame.draw.rect(DISPLAYSURF, textures[MENU], (TILESIZE * 7, TILESIZE * 2, TILESIZE * 1.75, TILESIZE * 3))
         
-        pygame.draw.rect(DISPLAYSURF, BLUE, (TILESIZE * 8, (yValue) - 16, TILESIZE / 2, (TILESIZE / 2) + 16))
+        
         
         pygame.draw.rect(DISPLAYSURF, monster['color'], ((TILESIZE * 4 + 64), (TILESIZE * 2 + 64), TILESIZE, TILESIZE))
         
-        useText = invFont.render('Use', False, WHITE)
-        DISPLAYSURF.blit(useText, ((TILESIZE * 8) + 24, (yValue) - 8))
-
-        backAgainText = invFont.render('Back', False, WHITE)
-        DISPLAYSURF.blit(backAgainText, ((TILESIZE * 8) + 24, (yValue) + 32))
+        
 
         pygame.draw.rect(DISPLAYSURF, WHITE, ((TILESIZE * 8) + 4, ((yValue) - 8) + selection, TILESIZE / 8, TILESIZE / 8))
         
@@ -1297,6 +1295,14 @@ def consumeOptionFight(item, yValue, monster):
             itemText = invFont.render(playerItem, False, WHITE)
             DISPLAYSURF.blit(itemText, (TILESIZE * 7.5, TILESIZE * (2 + distance)))
             distance += 0.25
+
+        useText = invFont.render('Use', False, WHITE)
+        DISPLAYSURF.blit(useText, ((TILESIZE * 8) + 24, (yValue) - 8))
+
+        backAgainText = invFont.render('Back', False, WHITE)
+        DISPLAYSURF.blit(backAgainText, ((TILESIZE * 8) + 24, (yValue) + 32))
+
+        pygame.draw.rect(DISPLAYSURF, BLUE, (TILESIZE * 8, (yValue) - 16, TILESIZE / 2, (TILESIZE / 2) + 16))
 
         pygame.display.update()
 
@@ -1597,23 +1603,25 @@ def equipOption(item, yValue, room):
                             if(playerEquipment[0] == 'None'):
                                 playerEquipment[0] = item
                                 playerInventory.remove(item)
+                                tempInt = 1
 
                             else:
                                 playerInventory.append(playerEquipment[0])
                                 playerEquipment[0] = item
                                 playerInventory.remove(item)
+                                tempInt = 1
 
                         elif(item in weapons):
                             if(playerEquipment[1] == 'None'):
-                                playerEquipment[0] = item
+                                playerEquipment[1] = item
                                 playerInventory.remove(item)
+                                tempInt = 1
 
                             else:
-                                playerInventory.append(playerEquipment[0])
-                                playerEquipment[0] = item
+                                playerInventory.append(playerEquipment[1])
+                                playerEquipment[1] = item
                                 playerInventory.remove(item)
-                        
-                        tempInt = 1
+                                tempInt = 1
                         
                     if(selection == 20):
                         playerInventory.remove(item)
@@ -1627,6 +1635,22 @@ def equipOption(item, yValue, room):
                 pygame.draw.rect(DISPLAYSURF, textures[room[cl][rw]], (TILESIZE * rw, TILESIZE * cl, TILESIZE, TILESIZE))
         pygame.draw.rect(DISPLAYSURF, RED, (playerPos[0], playerPos[1], TILESIZE, TILESIZE))
         pygame.draw.rect(DISPLAYSURF, textures[MENU], (TILESIZE * 7, TILESIZE * 2, TILESIZE * 1.75, TILESIZE * 3))
+        pygame.draw.rect(DISPLAYSURF, WHITE, (TILESIZE * 7.25, yValue, TILESIZE / 8, TILESIZE / 8))
+
+
+        
+
+        
+
+        backText = menuFont.render('Back', False, WHITE)
+        DISPLAYSURF.blit(backText, (TILESIZE * 7.5, TILESIZE * 4.5))
+        
+        distance = 0.25
+        for playerItem in playerInventory:
+            itemText = invFont.render(playerItem, False, WHITE)
+            DISPLAYSURF.blit(itemText, (TILESIZE * 7.5, TILESIZE * (2 + distance)))
+            distance += 0.25
+
         pygame.draw.rect(DISPLAYSURF, BLUE, (TILESIZE * 8, (yValue) - 16, TILESIZE / 2 + 32, (TILESIZE / 2) + 16))
 
         equipText = invFont.render('Equip', False, WHITE)
@@ -1637,20 +1661,7 @@ def equipOption(item, yValue, room):
 
         backAgainText = invFont.render('Back', False, WHITE)
         DISPLAYSURF.blit(backAgainText, ((TILESIZE * 8) + 24, (yValue) + 32))
-
         pygame.draw.rect(DISPLAYSURF, WHITE, ((TILESIZE * 8) + 4, ((yValue) - 8) + selection, TILESIZE / 8, TILESIZE / 8))
-        
-
-        pygame.draw.rect(DISPLAYSURF, WHITE, (TILESIZE * 7.25, yValue, TILESIZE / 8, TILESIZE / 8))
-
-        backText = menuFont.render('Back', False, WHITE)
-        DISPLAYSURF.blit(backText, (TILESIZE * 7.5, TILESIZE * 4.5))
-        
-        distance = 0.25
-        for playerItem in playerInventory:
-            itemText = invFont.render(playerItem, False, WHITE)
-            DISPLAYSURF.blit(itemText, (TILESIZE * 7.5, TILESIZE * (2 + distance)))
-            distance += 0.25
 
         pygame.display.update()
 
@@ -1956,9 +1967,10 @@ while True:
     endRoom = [
         [WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL],
         [WALL, FLOOR, FLOOR, FLOOR, FLOOR, FLOOR, FLOOR, FLOOR, FLOOR, LOCKEDDOOR],
-        [WALL, FLOOR, FLOOR, VOID, VOID, VOID, FLOOR, FLOOR, FLOOR, LOCKEDDOOR],
-        [WALL, FLOOR, FLOOR, VOID, VOID, VOID, FLOOR, FLOOR, FLOOR, WALL],
-        [WALL, FLOOR, FLOOR, VOID, VOID, VOID, FLOOR, FLOOR, FLOOR, WALL],
+        [WALL, FLOOR, FLOOR, VOID, VOID, VOID, VOID, FLOOR, FLOOR, LOCKEDDOOR],
+        [WALL, FLOOR, FLOOR, VOID, VOID, VOID, VOID, FLOOR, FLOOR, WALL],
+        [WALL, FLOOR, FLOOR, VOID, VOID, VOID, VOID, FLOOR, FLOOR, WALL],
+        [WALL, FLOOR, FLOOR, VOID, VOID, VOID, VOID, FLOOR, FLOOR, WALL],
         [WALL, FLOOR, FLOOR, FLOOR, FLOOR, FLOOR, FLOOR, FLOOR, FLOOR, WALL],
         [WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL]
     ]
